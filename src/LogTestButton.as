@@ -13,9 +13,8 @@ class LogTestButton
 	private var m_testFunc:Function;
 	static private var isMoving:Boolean = false;
 
-	public function LogTestButton(swfRoot: MovieClip, testFunc:Function, buttonName:String, offset:Number) 
+	public function LogTestButton(swfRoot: MovieClip, testFunc:Function, buttonName:String, offset:Number)
 	{
-		super();
 		m_testFunc = testFunc;
 		m_Clip = swfRoot.createEmptyMovieClip(buttonName + "Clip", swfRoot.getNextHighestDepth());
 		m_iconClip = m_Clip.attachMovie("src.assets.icons.LogIcon.png", buttonName + "Icon", m_Clip.getNextHighestDepth());
@@ -24,10 +23,10 @@ class LogTestButton
 		m_Clip._y = 25;
 		m_Clip._x = offset * 125;
 
-		
-		var format: TextFormat = new TextFormat("src.assets.fonts.FuturaMDBk.ttf", 20, 0xFF0000, true, false, false); 
+
+		var format: TextFormat = new TextFormat("src.assets.fonts.FuturaMDBk.ttf", 20, 0xFF0000, true, false, false);
 		format.align = "center";
-		
+
 		m_AlertText = m_iconClip.createTextField(buttonName + "Text", m_iconClip.getNextHighestDepth(), 0, 3, 125, 30);
 		m_AlertText.embedFonts = true; // we're using an embedded font from src/assets/fonts/
 		m_AlertText.selectable = false; // we don't want to be able to select this text
@@ -51,7 +50,7 @@ class LogTestButton
 			m_Clip.stopDrag();
 		}
 	}
-	
+
 	public function ToggleMove(newState:Boolean):Void
 	{
 		if (arguments.length == 0) {
@@ -59,7 +58,7 @@ class LogTestButton
 		}
 		isMoving = newState;
 	}
-	
+
 	// Get/Set X/Y Methods for the draggable clip
 	public function get _x():Number { return m_Clip._x;	}
 	public function set _x(newX:Number):Void { m_Clip._x = newX; }
@@ -68,12 +67,12 @@ class LogTestButton
 
 	public function get _visible():Boolean { return m_Clip._visible; }
 	public function set _visible(newVisibility:Boolean):Void { m_Clip._visible = newVisibility; }
-	
+
 	// Method to allow setting both X and Y at the same time
 	public function SetCoords(newX:Number, newY:Number):Void
 	{
 		m_Clip._x = newX;
 		m_Clip._y = newY;
 	}
-	
+
 }
